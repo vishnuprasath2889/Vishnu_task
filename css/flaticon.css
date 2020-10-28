@@ -1,0 +1,71 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 13/09/2016 11:01
+  	*/
+
+@font-face {
+  font-family: "Flaticon";
+  src:url(../fonts/Flaticon.eot);
+  src: url("../fonts/Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("../fonts/Flaticon.woff") format("woff"),
+       url("../fonts/Flaticon.ttf") format("truetype"),
+       url("../fonts/Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("../fonts/Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+        font-size: 45px;
+font-style: normal;
+}
+
+.flaticon-briefcase:before { content: "\f100"; }
+li:hover .flaticon-briefcase { content: "\f100"; color:#FFF; background-color:#008bcf; }
+.flaticon-building:before { content: "\f101"; }
+li:hover .flaticon-building { content: "\f101"; color:#FFF; background-color:#008bcf; }
+.flaticon-car:before { content: "\f102"; }
+li:hover .flaticon-car { content: "\f102"; color:#FFF; background-color:#008bcf; }
+.flaticon-cow:before { content: "\f103"; }
+li:hover .flaticon-cow { content: "\f103"; color:#FFF; background-color:#008bcf; }
+.flaticon-dining-room-furniture-of-a-table-with-chairs:before { content: "\f104"; }
+li:hover .flaticon-dining-room-furniture-of-a-table-with-chairs { content: "\f104"; color:#FFF; background-color:#008bcf; }
+.flaticon-fingerprint-search-symbol-of-secret-service-investigation:before { content: "\f105"; }
+li:hover .flaticon-fingerprint-search-symbol-of-secret-service-investigation:before { content: "\f105"; color:#FFF; background-color:#008bcf; }
+.flaticon-food:before { content: "\f106"; }
+li:hover .flaticon-food { content: "\f106"; color:#FFF; background-color:#008bcf; }
+.flaticon-furniture:before { content: "\f107"; }
+li:hover .flaticon-furniture { content: "\f107"; color:#FFF; background-color:#008bcf; }
+.flaticon-house:before { content: "\f108"; }
+li:hover .flaticon-house { content: "\f108"; color:#FFF; background-color:#008bcf; }
+.flaticon-laundry:before { content: "\f109"; }
+li:hover .flaticon-laundry { content: "\f109"; color:#FFF; background-color:#008bcf; }
+.flaticon-minus-horizontal-rounded-outlined-bar:before { content: "\f10a"; }
+li:hover .flaticon-minus-horizontal-rounded-outlined-bar { content: "\f10a"; color:#FFF; background-color:#008bcf; }
+.flaticon-more:before { content: "\f10b"; }
+li:hover .flaticon-more { content: "\f10b"; color:#FFF; background-color:#008bcf; }
+.flaticon-mortarboard:before { content: "\f10c"; }
+li:hover .flaticon-mortarboard { content: "\f10c"; color:#FFF; background-color:#008bcf; }
+.flaticon-rings:before { content: "\f10d"; }
+li:hover .flaticon-rings { content: "\f10d"; color:#FFF; background-color:#008bcf; }
+.flaticon-sesame:before { content: "\f10e"; }
+li:hover .flaticon-sesame { content: "\f10e"; color:#FFF; background-color:#008bcf; }
+.flaticon-settings:before { content: "\f10f"; }
+li:hover .flaticon-settings { content: "\f10e"; color:#FFF; background-color:#008bcf; }
+.flaticon-single-motorbike:before { content: "\f110"; }
+li:hover .flaticon-single-motorbike { content: "\f10c"; color:#FFF; background-color:#008bcf; }
+.flaticon-smartphone-and-tablet:before { content: "\f111"; }
+li:hover .flaticon-smartphone-and-tablet { content: "\f10c"; color:#FFF; background-color:#008bcf; }
+.flaticon-sperm:before { content: "\f112"; }
+li:hover .flaticon-sperm { content: "\f10c"; color:#FFF; background-color:#008bcf; }
+
+
+

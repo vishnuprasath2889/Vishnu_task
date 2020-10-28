@@ -1,0 +1,19 @@
+@media print
+{
+	body {-webkit-print-color-adjust: exact;}
+.header{ display:none;}
+.leftpanel, .header-left, .header-right, .pageheader, .headerwrapper, .pace, .dataTables_filter, .basicTable_length, .dataTables_paginate, .dataTables_length, .dataTables_info, .panel-footer, .print_use { display:none;}
+.btn, input[type="button"]{ display:none;}
+.main_footer{ display:none;}
+.print_use{ /*display:none;*/}
+.mainpanel{margin-left: 0px;}
+.mainwrapper{position: relative;top: 0px;}
+.panel-heading{padding: 18px 20px 20px 0px;}
+.mainwrapper:before{border-right: 0px solid #fff;}
+.form-control{ border:0px;}
+.table.dataTable thead > tr > th{ font-weight:normal; font-size:17px;}
+ .panel-default { border:none; }
+  .adhar_printlt{ page-break-after: always; margin-left:-15px; padding-top:0px; }
+  .uidtag_ad{ color:#F00; }
+}
+@page {margin: 0.8cm;}
