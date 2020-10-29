@@ -192,18 +192,15 @@ $sess_login=$this->session->userdata('sess_login');
 
   
 <script type="text/javascript">
-
-
-
-
+ 
 
 function validate()
 {	 	 
- 		var name_u=$("#name").val();
-		var phone_u=$("#phone").val();
-		var email_u=$("#email").vneal();
-		var dob_u=$("#dob").val();
-  var i=0;
+	var name_u=$("#name").val();
+	var phone_u=$("#phone").val();
+	var email_u=$("#email").vneal();
+	var dob_u=$("#dob").val();
+	var i=0;
   	var sfilter= /^[a-zA-Z.\s]{3,30}$/;
 	if(name_u=="" || name_u==null || name_u.trim().length==0)
 	{	
@@ -351,8 +348,7 @@ if(dob_u=="" || dob_u==null || dob_u.trim().length==0)
 				{
 					$('#addemployee').modal('hide');
 					alert('Data Added successfully !'); 
-					//location.reload();
-					$("#Add_form")[0].reset();
+ 					$("#Add_form")[0].reset();
 					get_employee();			
 					 
 				}
@@ -382,9 +378,7 @@ $(document).on('click','#delete_btn',function(e) {
 				
 				        $('#DeleteEmployeeModal').modal('hide');
 						alert('Data Deleted successfully !'); 
-                       // location.reload();			
-					 
-					 get_employee();
+ 					    get_employee();
 			}
 		});
 		
@@ -470,8 +464,7 @@ $(document).on('click','#update_btn',function(e) {
 				{
 				        $('#editEmployeeModal').modal('hide');
 						alert('Data updated successfully !'); 
-                        //location.reload();
-						 get_employee();			
+ 						get_employee();			
 				}
 					 
 			}
