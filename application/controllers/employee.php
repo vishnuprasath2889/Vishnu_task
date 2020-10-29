@@ -17,16 +17,13 @@ class Employee extends CI_Controller {
 	{
  		$this->load->model('employee_model');
 		$list = $this->employee_model->reg_list_model();
-		//$this->load->view('employee_list',$data);
-		//echo"list";echo"<pre>";print_r($list);exit;
- 	    echo $list;
+  	    echo $list;
 	}
 	
 	public function employee_list_view()
 	{
  		$this->load->model('employee_model');
-		//$data['list']= $this->employee_model->reg_list_model();
-		$this->load->view('employee_list');
+ 		$this->load->view('employee_list');
  	 
 	}
 	
@@ -36,10 +33,12 @@ class Employee extends CI_Controller {
 	{
 		$this->load->model('employee_model');
 		$inps=$this->input->post();
-		//echo"inps";echo"<pre>";print_r($inps);exit;
-		$data['list']= $this->employee_model->insert_employee($inps);
-		//redirect($this->config->item('base_url').'employee/employee_list_view');	
- 	 
+		$list= $this->employee_model->insert_employee($inps);
+  	    // echo"list";echo"<pre>";print_r($list);exit;
+		 
+		 echo $list;
+		 
+		 
 	}	
 	
 	
@@ -48,9 +47,29 @@ class Employee extends CI_Controller {
 		$this->load->model('employee_model');
 		$inps=$this->input->post();
 	    //echo"inps upda";echo"<pre>";print_r($inps);exit;
-		$data['list']= $this->employee_model->employee_update_model($inps);
-	    //redirect($this->config->item('base_url').'employee/employee_list_view');	
- 	 
+		$updt= $this->employee_model->employee_update_model($inps);
+  	    //echo"list";echo"<pre>";print_r($updt);exit;
+		 echo $updt;
+	}	
+	
+	 public function verify_phone()
+	{
+		$this->load->model('employee_model');
+		$inps=$this->input->post('phone');
+	     //echo"inps upda";echo"<pre>";print_r($inps);exit;
+		$updt= $this->employee_model->verify_phone_model($inps);
+  	    //echo"list";echo"<pre>";print_r($updt);exit;
+		 echo $updt;
+	}	
+	
+	 public function verify_email()
+	{
+		$this->load->model('employee_model');
+		$inps=$this->input->post('email');
+	     //echo"inps upda";echo"<pre>";print_r($inps);exit;
+		$updt= $this->employee_model->verify_email_model($inps);
+  	    //echo"list";echo"<pre>";print_r($updt);exit;
+		 echo $updt;
 	}	
 	
 	 public function delete_employee()
@@ -59,27 +78,9 @@ class Employee extends CI_Controller {
 		$inps=$this->input->post();
 		 //echo"inps delete";echo"<pre>";print_r($inps);exit;
 		$data['list']= $this->employee_model->employee_delete_model($inps);
-		redirect($this->config->item('base_url').'employee/employee_list_view');	
- 	 
+  	 
 	}	
-	
-	
-	public function update_reg()
-	{
-		$this->load->model('employee_model');
-		$inps=$this->input->post();
-		$data['list']= $this->employee_model->reg_update_model($inps);
-		redirect($this->config->item('base_url').'employee/reg_list_view');	
-		
-	}
-	
-    function verify_phone()
-	{
-		$this->load->model('employee_model');
-		$inps=$this->input->post('phone');
-		echo"inps upda";echo"<pre>";print_r($inps);exit;
-	}
-	 
+	  
 	public function delete_reg()
 	{
 		$this->load->model('employee_model');

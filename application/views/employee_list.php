@@ -18,12 +18,14 @@
 	
 </style>
 
-<?php $theme_path = $this->config->item('base_url');
+<?php $theme_path ='../../';
 $sess_login=$this->session->userdata('sess_login');
- // echo"<pre>";print_r($sess_login);exit;
+  //echo"<pre>";print_r($theme_path);exit;
 
  ?>
-
+<script type="text/javascript">
+		var BASE_URL = '<?php echo $this->config->item('base_url').'index.php/';  ?>';
+		</script>
 
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -136,7 +138,7 @@ $sess_login=$this->session->userdata('sess_login');
 
                       <br/>
                      <strong>&nbsp; &nbsp;&nbsp; &nbsp;  <span id="nme"> </span></strong>  </p>
-						<input type="text" id="id_u" name="id" class="form-control" required>					
+						<input type="hidden" id="id_u" name="id" class="form-control" required>					
  					</div>
 					<div class="modal-footer">
  		 <input type="button" class="btn btn-warning" data-dismiss="modal" value="Cancel">
@@ -157,7 +159,7 @@ $sess_login=$this->session->userdata('sess_login');
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 					</div>
 					<div class="modal-body">
-						<input type="text" id="id_um" name="id" class="form-control" required>					
+						<input type="hidden" id="id_um" name="id" class="form-control" required>					
 						<div class="form-group">
 							<label>Name</label>
 							<input type="text" id="name_u" name="name" class="form-control" required>
@@ -188,11 +190,7 @@ $sess_login=$this->session->userdata('sess_login');
 		</div>
 	</div>
 
- 
- <script type="text/javascript">
-		var BASE_URL = '<?php echo $this->config->item('base_url');  ?>';
-		</script>
-
+  
 <script type="text/javascript">
 
 
@@ -200,8 +198,7 @@ $sess_login=$this->session->userdata('sess_login');
 
 
 function validate()
-{	//var data = $("#update_form").serialize();
- 		 
+{	 	 
  		var name_u=$("#name").val();
 		var phone_u=$("#phone").val();
 		var email_u=$("#email").vneal();
@@ -278,13 +275,12 @@ if(dob_u=="" || dob_u==null || dob_u.trim().length==0)
 	
  $(document).on('click','#add_btn',function(e) {
 		
-		var data = $("#Add_form").serialize();
-		
- 		var name_u=$("#name").val();
-		var phone_u=$("#phone").val();
-		var email_u=$("#email").val();
-		var dob_u=$("#dob").val();
-  var i=0;
+	var data = $("#Add_form").serialize();
+ 	var name_u=$("#name").val();
+	var phone_u=$("#phone").val();
+	var email_u=$("#email").val();
+	var dob_u=$("#dob").val();
+	var i=0;
   	var sfilter= /^[a-zA-Z.\s]{3,30}$/;
 	if(name_u=="" || name_u==null || name_u.trim().length==0)
 	{	
@@ -351,12 +347,15 @@ if(dob_u=="" || dob_u==null || dob_u.trim().length==0)
 			 url:BASE_URL+"employee/add_employee",
  			success: function(dataResult){
 				
-				        $('#addemployee').modal('hide');
-						alert('Data Added successfully !'); 
-                        //location.reload();
- 						$("#Add_form")[0].reset();
-						 get_employee();			
+ 				if(dataResult==1)
+				{
+					$('#addemployee').modal('hide');
+					alert('Data Added successfully !'); 
+					//location.reload();
+					$("#Add_form")[0].reset();
+					get_employee();			
 					 
+				}
 					 
 			}
 		});
@@ -373,9 +372,8 @@ if(dob_u=="" || dob_u==null || dob_u.trim().length==0)
 $(document).on('click','#delete_btn',function(e) {
 	
 		var data = $("#Delete_form").serialize();
-		alert(data);
-		 
-	  var id_u=$("#id_u").val();
+		
+		var id_u=$("#id_u").val();
   		$.ajax({
 			data: data,
 			type: "post",
@@ -397,27 +395,23 @@ $(document).on('click','#delete_btn',function(e) {
 
 $(document).on('click','#update_btn',function(e) {
 	
-		var data = $("#update_form").serialize();
-		alert(data);
-		 
-		 var id_u=$("#id_um").val();
-		 var name_u=$("#name_u").val();
+	var data = $("#update_form").serialize();
+	
+	var id_u=$("#id_um").val();
+	var name_u=$("#name_u").val();
 	var phone_u=$("#phone_u").val();
 	var email_u=$("#email_u").val();
 	var dob_u=$("#dob_u").val();
- alert(name_u);
- var i=0;
+	var i=0;
   	var sfilter= /^[a-zA-Z.\s]{3,30}$/;
 	if(name_u=="" || name_u==null || name_u.trim().length==0)
 	{	
-	alert(11);
- 	 	$("#u_name_err").html('Enter Name');
+  	 	$("#u_name_err").html('Enter Name');
 		i=1;
 	}
 	else if(!sfilter.test(name_u))
 	{
-			alert(22);
-		$("#u_name_err").html('Alphabets and Min 3 to Max 30 ');
+ 		$("#u_name_err").html('Alphabets and Min 3 to Max 30 ');
 		i=1;
 	}
 	else
@@ -456,7 +450,7 @@ $(document).on('click','#update_btn',function(e) {
 		$("#u_email_id_err").html("");
 	}
 	
-if(dob_u=="" || dob_u==null || dob_u.trim().length==0)
+    if(dob_u=="" || dob_u==null || dob_u.trim().length==0)
 	{	
  	 	$("#u_dob_err").html('Enter Address');
 		i=1;
@@ -465,20 +459,20 @@ if(dob_u=="" || dob_u==null || dob_u.trim().length==0)
 	{
 		$("#u_dob_err").html('');
 	}
-	alert(i);
-	if(i==0)
+ 	if(i==0)
 	{
  		$.ajax({
 			data: data,
 			type: "post",
 			 url:BASE_URL+"employee/update_employee",
  			success: function(dataResult){
-				
+ 				if(dataResult==1)
+				{
 				        $('#editEmployeeModal').modal('hide');
 						alert('Data updated successfully !'); 
                         //location.reload();
 						 get_employee();			
-					 
+				}
 					 
 			}
 		});
@@ -491,29 +485,21 @@ if(dob_u=="" || dob_u==null || dob_u.trim().length==0)
 	
 	
 	});
-	
-	  
-	
-	
-	$(document).on('click','.delete',function(e) {
-	alert(66);
-	
  
-		var id=$(this).attr("data-id");
-		var name=$(this).attr("data-name");
-	 
-		$('#id_u').val(id);
-		$('#nme').html(name);
+ $(document).on('click','.delete',function(e) {
+
+	var id=$(this).attr("data-id");
+	var name=$(this).attr("data-name");
  
-	});
+	$('#id_u').val(id);
+	$('#nme').html(name);
+
+});
 
 $(document).on('click','.update',function(e) {
-	alert(66);
-	
- 
-		var id=$(this).attr("data-id_um");
-		alert(id);
-		var name=$(this).attr("data-name");
+ 	
+ 		var id=$(this).attr("data-id_um");
+ 		var name=$(this).attr("data-name");
 		var email=$(this).attr("data-email");
 		var phone=$(this).attr("data-phone");
 		var dob=$(this).attr("data-dob");
@@ -532,128 +518,28 @@ function isNumber(evt) {
     }
     return true;
 }
-  
-$("#update_btnn").live('click',function()
-{
-	var i=0;
- 	/*var ids=$(this).attr('id');
-	var id=ids.split("_");
-	id=id[1];
-	*/
-	      var data = $("#update_form").serialize();
-
-	
-		$('#name_u').val(name);
-		$('#email_u').val(email);
-		$('#phone_u').val(phone);
-		$('#dob_u').val(dob);
-		
-    var name_u=$("#name_u").val();
-	var phone_u=$("#phone_u").val();
-	var email_u=$("#email_u").val();
-	var dob_u=$("#dob_u").val();
- alert(name_u);
-  	var sfilter= /^[a-zA-Z.\s]{3,30}$/;
-	if(name_u=="" || name_u==null || name_u.trim().length==0)
-	{	
-	alert(11);
- 	 	$("#u_name_err").html('Enter Name');
-		i=1;
-	}
-	else if(!sfilter.test(name_u))
-	{
-			alert(22);
-		$("#u_name_err").html('Alphabets and Min 3 to Max 30 ');
-		i=1;
-	}
-	else
-	{
-		$("#u_name_err").html('');
-	}
-	var mfilter=/^[0-9]{10}$/;
-	if(phone_u=="" || phone_u==null || phone_u.trim().length==0)
-	{	
- 	 	$("#u_mob_no_err").html('Enter Mobile No');
-		i=1;
-	}
-	else if(!mfilter.test(phone_u))
-	{
-		$("#u_mob_no_err").html("Numeric only and length 10");
-		i=1;
-	}
-	else
-	{
-		$("#u_mob_no_err").html('');
-	}
-	
- 	var em1filter=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-	if(email_u=="" || email_u==null || email_u.trim().length==0)
-	{
-		i=1;
-		$("#u_email_id_err").html("Enter Email Id");
-	}
-	else if(!em1filter.test(email_u))
-	{
-		i=1;
-		$("#u_email_id_err").html("Enter Valid Email");
-	}
-	else
-	{
-		$("#u_email_id_err").html("");
-	}
-	
-if(dob_u=="" || dob_u==null || dob_u.trim().length==0)
-	{	
- 	 	$("#u_addr_err").html('Enter Address');
-		i=1;
-	}
- 	else
-	{
-		$("#u_addr_err").html('');
-	}
-	
-  	if(i==0)
-	{
-		 return false;
-	}
-	else
-	{
-		return false;
-	}
-});
-
-
+ 
 $(document).ready(function() {
-	
-	
-	 //alert('test!');
-	 get_employee();
-	 
-	  });
+   	 get_employee();
+   });
 
-
-
+ 
 function get_employee()
 {
 	$('#list_view').html('');
-	// alert('get test!');
-	
-	$.ajax({
+ 	$.ajax({
  			type: "get",
 			 url:BASE_URL+"employee/employee_list",
  			success: function(dataResult){
  				    $('#list_view').html(dataResult);
-				    //Data updated successfully !'); 
-                    // location.reload();			
-  			}
+    			}
 	});
 }
 
-$("#phone").live('change',function()
+$("#phone").live('keyup',function()
 {
 	var phone = $("#phone").val();
-	alert(phone);
-	if(phone=="" || phone==null || phone.trim().length==0)
+ 	if(phone=="" || phone==null || phone.trim().length==0)
 	{	
 		$("#phone_err").html("Enter Phone No");
 		
@@ -668,10 +554,112 @@ $("#phone").live('change',function()
 			type: "post",
 		    url:BASE_URL+"employee/verify_phone",
  			success: function(dataResult){
+                 if(dataResult==2)
+				{
+ 						alert('Already phone no exist  !'); 
+                        $("#phone").val('');
+						 get_employee();			
+				}
+					
+			}
+		});
+	}
+});
+
+  
+$("#phone_u").live('keyup',function()
+{
+	var phone = $("#phone_u").val();
+ 	if(phone=="" || phone==null || phone.trim().length==0)
+	{	
+		$("#phone_err").html("Enter Phone No");
+		
+	}
+	else
+	{
+		
+		$.ajax({
+			data:{ 
+				phone:phone
+		   },
+			type: "post",
+		    url:BASE_URL+"employee/verify_phone",
+ 			success: function(dataResult){
+                 if(dataResult==2)
+				{
+ 						alert('Already phone no exist  !'); 
+                        $("#phone_u").val('');
+						 get_employee();			
+				}
+					
+			}
+		});
+	}
+});
+
+
+
+ 
+ 
+$("#email_u").live('keyup',function()
+{
+	var email = $("#email_u").val();
+ 	if(email=="" || email==null || email.trim().length==0)
+	{	
+		$("#phone_err").html("Enter E-Mail ID");
+		
+	}
+	else
+	{
+		
+		$.ajax({
+			data:{ 
+				email:email
+		   },
+			type: "post",
+		    url:BASE_URL+"employee/verify_email",
+ 			success: function(dataResult){
 				
-                          //location.reload();
- 					 
-					 
+                if(dataResult==2)
+				{
+ 						alert('Already E-Mail ID exist  !'); 
+                        //location.reload();
+						 $("#email_u").val('');
+						 get_employee();			
+				}
+					
+			}
+		});
+	}
+});
+ 
+ 
+$("#email").live('keyup',function()
+{
+	var email = $("#email").val();
+ 	if(email=="" || email==null || email.trim().length==0)
+	{	
+		$("#phone_err").html("Enter E-Mail ID");
+		
+	}
+	else
+	{
+		
+		$.ajax({
+			data:{ 
+				email:email
+		   },
+			type: "post",
+		    url:BASE_URL+"employee/verify_email",
+ 			success: function(dataResult){
+				
+                if(dataResult==2)
+				{
+ 						alert('Already E-Mail ID exist  !'); 
+ 						 $("#email").val('');
+						 get_employee();			
+				}
+					
 			}
 		});
 	}

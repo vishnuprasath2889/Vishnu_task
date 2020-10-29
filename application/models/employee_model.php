@@ -34,6 +34,8 @@ function _construct()
 		$insert_arr = array('emp_name'=>$data['name'],'emp_id'=>$new_ref_id,'emp_code'=>$auto_value,'emp_email'=>$data['email'],'phone_no'=>$data['phone'],'dob'=>$data['dob'],'status'=>'0','df'=>'0','post_dt'=>$cur_dt);
 		  // echo"<pre>";print_r($insert_arr);exit;
         $this->db->insert('employee_details',$insert_arr);
+		
+		return 1;
      }
 	
 
@@ -44,7 +46,7 @@ function _construct()
 	  // echo"<pre>";print_r($dets);exit;
  		$this->db->where('id',$inps['id']);
 		$this->db->update('employee_details',$dets);
-		return true; 	
+		return 1; 	
 	}
 	
 	function employee_delete_model($inps)
@@ -55,6 +57,42 @@ function _construct()
 		return true; 	
 	}
   	  
+    function verify_phone_model($phone)
+	{
+		
+		$this->db->select('employee_details.*');
+		$this->db->where('phone_no', $phone);
+		$this->db->where('df', 0);
+  		$query = $this->db->get('employee_details')->result_array();
+		if(isset($query) && !empty($query))
+		{
+			return 2;
+		}
+		else
+		{
+			return 1;
+		}
+		//echo"inps query";echo"<pre>";print_r($query);exit;
+	}
+	
+	function verify_email_model($email)
+	{
+		
+		$this->db->select('employee_details.*');
+		$this->db->where('email', $email);
+		$this->db->where('df', 0);
+  		$query = $this->db->get('employee_details')->result_array();
+		if(isset($query) && !empty($query))
+		{
+			return 2;
+		}
+		else
+		{
+			return 1;
+		}
+		//echo"inps query";echo"<pre>";print_r($query);exit;
+	}
+	
     function reg_list_model()
 	{
 		
@@ -100,13 +138,13 @@ $i=1;
 					 
 							
                              <a href="#editEmployeeModal" class="edit" data-toggle="modal">
-							<i class="material-icons update" data-toggle="tooltip" 
+							<i class="fa fa-edit update" style="font-size:30px;color:blue"   data-toggle="tooltip" 
  							data-id_um="'.$val['id'].'" 
 							data-name="'.$val['emp_name'].'"
 							data-email="'.$val['emp_email'].'"
                             data-phone="'.$val['phone_no'].'"
 							data-dob="'.$val['dob'].'"
- 							title="Edit">Edit</i>
+ 							title="Edit"></i>
 						</a> 
                       
                         </td>
