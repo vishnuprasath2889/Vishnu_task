@@ -131,7 +131,7 @@ $i=1;
                                         <strong>'.$val['phone_no'].'</strong>
                                     </td>
 									<td >
-                                        <strong>'.$val['dob'].'</strong>
+                                        <strong>'.date('d-m-Y',strtotime($val['dob'])).'</strong>
                                     </td>
 									
 							 <td class="table-action">
