@@ -79,7 +79,7 @@ function _construct()
 	{
 		
 		$this->db->select('employee_details.*');
-		$this->db->where('email', $email);
+		$this->db->where('emp_email', $email);
 		$this->db->where('df', 0);
   		$query = $this->db->get('employee_details')->result_array();
 		if(isset($query) && !empty($query))
