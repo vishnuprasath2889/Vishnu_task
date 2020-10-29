@@ -281,7 +281,7 @@ if(dob_u=="" || dob_u==null || dob_u.trim().length==0)
 	var email_u=$("#email").val();
 	var dob_u=$("#dob").val();
 	var i=0;
-  	var sfilter= /^[a-zA-Z.\s]{3,30}$/;
+  	var sfilter= /^[a-zA-Z.'\s]{3,30}$/;
 	if(name_u=="" || name_u==null || name_u.trim().length==0)
 	{	
   	 	$("#name_err").html('Enter Name');
@@ -403,7 +403,7 @@ $(document).on('click','#update_btn',function(e) {
 	var email_u=$("#email_u").val();
 	var dob_u=$("#dob_u").val();
 	var i=0;
-  	var sfilter= /^[a-zA-Z.\s]{3,30}$/;
+  	var sfilter= /^[a-zA-Z.'\s]{3,30}$/;
 	if(name_u=="" || name_u==null || name_u.trim().length==0)
 	{	
   	 	$("#u_name_err").html('Enter Name');
